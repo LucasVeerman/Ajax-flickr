@@ -83,4 +83,13 @@ p#bron a{
         text-decoration: none;
         color: #aaa;
     }
+    h1,
+    p
+    {
+        text-align: center;
+    }
+    #zoekterm
+    {
+        margin-left: 44%
+    }
 }

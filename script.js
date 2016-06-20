@@ -5,13 +5,14 @@ $(document).ready(function() {
         haalFotos();
     });
     $('#zoekterm').keydown(function(e){
-        if(e.keyCode == 13){
+        if(e.keyCode == 13)//Wanneer de entertoets ingedrukt wordt
+        {
             zoekTerm = $(this).val();
             haalFotos();
         }
     });
     
-    function haalFotos(){
+    function haalFotos(){//laadt de foto's van Flickr.com
         var flickrURL = "http://api.flickr.com/services/feeds/photos_public.gne?format=json&tags=" + 
         zoekTerm + "&jsoncallback=?";
         $.ajax (
@@ -29,10 +30,10 @@ $(document).ready(function() {
         $('#fotos').html("");
         for(var i=0; i<data.items.length; i++){
             var foto = data.items[i];
-            var htmlCode = "<div class='houder'><div class='afbeelding'><a href='" + foto.link + "' target='_blank'><img src='" + foto.media.m + "'alt='" + foto.title + "' ></a></div><h4>" + foto.title + "</h4></div>";
+            var htmlCode = "<div class='houder'><div class='afbeelding'><a href='" + foto.link + "' target='_blank'><img src='" + foto.media.m + "'alt='" + foto.title + "' ></a></div><h4>" + foto.title + "</h4></div>";//plaatst code in de html
             $('#fotos').append(htmlCode);
         }
-        $('#bron a').attr("href", data.link).text(data.title + " door Flickr.com");
+        $('#bron a').attr("href", data.link).text(data.title + " door Flickr.com");//Plaatst de link in div met id 'bron'
         
     }
 })
